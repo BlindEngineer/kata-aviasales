@@ -1,0 +1,19 @@
+@import "src/services/constants";
+
+.show-button {
+  padding: 15px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: $bgWhite;
+  border: none;
+  background-color: $primaryBlue;
+  border-radius: 5px;
+
+  &:hover {
+    cursor: url(../../assets/img/Cursor.svg), pointer;
+  }
+}

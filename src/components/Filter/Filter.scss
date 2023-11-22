@@ -1,0 +1,43 @@
+@import "src/services/constants";
+
+.filter {
+display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+
+  &__button {
+    padding: 15px;
+    flex-grow: 1;
+    color: $mainText;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background-color: $bgWhite;
+    border: 1px solid $secondaryBorder;
+
+    &:hover {
+      cursor: url(../../assets/img/Cursor.svg), pointer;
+    }
+
+    &--active {
+      color: $bgWhite;
+      border: none;
+      background-color: $primaryBlue;
+    }
+
+    &--left {
+      border-radius:   5px 0 0 5px ;
+      border-right: none;
+    }
+
+    &--right {
+      border-radius:    0 5px 5px 0;
+      border-left: none;
+
+
+  }
+}}
+

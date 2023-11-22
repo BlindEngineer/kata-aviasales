@@ -1,0 +1,55 @@
+@import "src/services/constants";
+@import "src/services/fonts";
+
+
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+input, textarea, button {
+  all: unset;
+}
+
+body {
+  background-color: $bgColor;
+}
+
+.app {
+  margin: 0 auto;
+  text-align: center;
+  padding: 40px 20px 50px;
+  max-width: 794px;
+
+  @media (max-width: 410px) {
+    padding: 15px 5px 20px;
+  }
+}
+
+.wrapper {
+  padding-top: 32px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 20px;
+
+  @media (max-width: 650px) {
+    flex-direction: column;
+  }
+
+  @media (max-width: 410px) {
+    padding-top: 12px;
+  }
+}
+
+.main {
+display: flex;
+  flex-direction: column;
+  width: 100%;
+}
