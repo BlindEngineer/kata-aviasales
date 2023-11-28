@@ -1,7 +1,7 @@
-@import "src/services/constants";
+@import 'src/services/constants';
 
-.filter {
-display: flex;
+.sort-tabs {
+  display: flex;
   width: 100%;
   margin-bottom: 20px;
 
@@ -29,15 +29,13 @@ display: flex;
     }
 
     &--left {
-      border-radius:   5px 0 0 5px ;
+      border-radius: 5px 0 0 5px;
       border-right: none;
     }
 
     &--right {
-      border-radius:    0 5px 5px 0;
+      border-radius: 0 5px 5px 0;
       border-left: none;
-
-
+    }
   }
-}}
-
+}

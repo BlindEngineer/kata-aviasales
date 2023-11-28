@@ -3,7 +3,7 @@ import '../../services/constants.scss'
 import './App.scss'
 import logo from '../../assets/img/Logo.svg'
 import TransferOptions from '../TransferOptions/TransferOptions'
-import Filter from '../Filter/Filter'
+import SortTabs from '../SortTabs/SortTabs'
 import CardList from '../CardList/CardList'
 import ShowMoreButton from '../ShowMoreButton/ShowMoreButton'
 
@@ -16,7 +16,7 @@ function App() {
           <TransferOptions />
         </aside>
         <main className="main">
-          <Filter />
+          <SortTabs />
           <CardList />
           <ShowMoreButton />
         </main>

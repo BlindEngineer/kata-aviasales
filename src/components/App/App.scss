@@ -1,19 +1,21 @@
-@import "src/services/constants";
-@import "src/services/fonts";
-
-
+@import 'src/services/constants';
+@import 'src/services/fonts';
 
 html {
   box-sizing: border-box;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
 }
 
-input, textarea, button {
+input,
+textarea,
+button {
   all: unset;
 }
 
@@ -49,7 +51,7 @@ body {
 }
 
 .main {
-display: flex;
+  display: flex;
   flex-direction: column;
   width: 100%;
 }

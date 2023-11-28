@@ -1,15 +1,17 @@
 @font-face {
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   font-style: normal;
   font-weight: 400;
-  src: local("Open Sans"),
-  url("../assets/fonts/OpenSans-Regular.ttf") format("truetype");
+  src:
+    local('Open Sans'),
+    url('../assets/fonts/OpenSans-Regular.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   font-style: normal;
   font-weight: 600;
-  src: local("Open Sans"),
-  url("../assets/fonts/OpenSans-SemiBold.ttf") format("truetype");
+  src:
+    local('Open Sans'),
+    url('../assets/fonts/OpenSans-SemiBold.ttf') format('truetype');
 }

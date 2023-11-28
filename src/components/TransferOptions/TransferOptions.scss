@@ -1,4 +1,4 @@
-@import "src/services/constants";
+@import 'src/services/constants';
 
 .transfer-options {
   background-color: $bgWhite;
@@ -7,7 +7,7 @@
   flex-shrink: 0;
   padding: 20px;
   border-radius: 5px;
-  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.10);
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
   text-align: start;
 
   @media (max-width: 650px) {
@@ -15,7 +15,6 @@
     width: auto;
     max-width: 595px;
   }
-
 
   &__header {
     color: $mainText;
@@ -38,7 +37,7 @@
   &__checkbox {
     position: absolute;
     display: block;
-    content: url("../../assets/img/CheckboxEmpty.svg");
+    content: url('../../assets/img/CheckboxEmpty.svg');
     top: 0;
     left: -30px;
   }
@@ -53,28 +52,21 @@
     margin-left: 30px;
   }
 
-  &__label:hover>.transfer-options__checkbox {
+  &__label:hover > .transfer-options__checkbox {
     box-shadow:
-            0 0 4px 1px $primaryBlue,
-    0 0 1px 1px inset $primaryBlue;
+      0 0 4px 1px $primaryBlue,
+      0 0 1px 1px inset $primaryBlue;
     border-radius: 2px;
   }
 
   &__input:focus + .transfer-options__checkbox {
-    box-shadow:
-            0 0 4px 1px $primaryBlue;
+    box-shadow: 0 0 4px 1px $primaryBlue;
     //0 0 rgba(66, 147, 245, 1);
     border-radius: 2px;
   }
 
   &__input:checked + .transfer-options__checkbox {
-    content: url("../../assets/img/Checkbox.svg");
+    content: url('../../assets/img/Checkbox.svg');
     border-radius: 2px;
   }
-
-
-
-
-
-
 }
