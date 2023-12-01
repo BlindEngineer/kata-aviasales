@@ -1,8 +1,23 @@
-import logoS7 from '../../assets/img/S7-Logo.png'
-
 import classes from './Card.module.scss'
 
-function Card() {
+function Card({
+  price,
+  brandLogo,
+  thereOrigin,
+  thereDestination,
+  thereDuration,
+  thereStartTime,
+  thereFinishTime,
+  thereStops,
+  thereTransfersCount,
+  backOrigin,
+  backDestination,
+  backStartTime,
+  backFinishTime,
+  backDuration,
+  backStops,
+  backTransfersCount,
+}) {
   const {
     card,
     card__column: cardColumn,
@@ -18,35 +33,43 @@ function Card() {
   return (
     <div className={card}>
       <div className={cardTop}>
-        <span className={cardPrice}>13 400 Р </span>
-        <img src={logoS7} className={cardBrandLogo} alt="ЛОГОТИП АВИАКОМПАНИИ" />
+        <span className={cardPrice}>{price}</span>
+        <img src={brandLogo} className={cardBrandLogo} alt="ЛОГОТИП АВИАКОМПАНИИ" />
       </div>
       <div className={`${cardThere} ${cardSection}`}>
         <div className={cardColumn}>
-          <div className={cardColumnTitle}>MOW – HKT</div>
-          <div className={cardColumnInfo}>10:45 – 08:00</div>
+          <div className={cardColumnTitle}>
+            {thereOrigin} – {thereDestination}
+          </div>
+          <div className={cardColumnInfo}>
+            {thereStartTime} – {thereFinishTime}
+          </div>
         </div>
         <div className={cardColumn}>
           <div className={cardColumnTitle}>В пути</div>
-          <div className={cardColumnInfo}>21ч 15м</div>
+          <div className={cardColumnInfo}>{thereDuration}</div>
         </div>
         <div className={cardColumn}>
-          <div className={cardColumnTitle}>2 пересадки</div>
-          <div className={cardColumnInfo}>HKG, JNB</div>
+          <div className={cardColumnTitle}>{thereTransfersCount}</div>
+          <div className={cardColumnInfo}>{thereStops}</div>
         </div>
       </div>
       <div className={`${cardBack} ${cardSection}`}>
         <div className={cardColumn}>
-          <div className={cardColumnTitle}>MOW – HKT</div>
-          <div className={cardColumnInfo}>11:20 – 00:50</div>
+          <div className={cardColumnTitle}>
+            {backOrigin} – {backDestination}
+          </div>
+          <div className={cardColumnInfo}>
+            {backStartTime} – {backFinishTime}
+          </div>
         </div>
         <div className={cardColumn}>
           <div className={cardColumnTitle}>В пути</div>
-          <div className={cardColumnInfo}>13ч 30м</div>
+          <div className={cardColumnInfo}>{backDuration}</div>
         </div>
         <div className={cardColumn}>
-          <div className={cardColumnTitle}>1 пересадка</div>
-          <div className={cardColumnInfo}>HKG</div>
+          <div className={cardColumnTitle}>{backTransfersCount}</div>
+          <div className={cardColumnInfo}>{backStops}</div>
         </div>
       </div>
     </div>

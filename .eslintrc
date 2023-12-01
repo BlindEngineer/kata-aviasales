@@ -23,7 +23,7 @@
   },
   "plugins": ["react", "prettier", "import"],
   "rules": {
-    "indent": ["warn", 2],
+    "indent": ["warn", 2, { "SwitchCase": 1 }],
     "prettier/prettier": "error",
     "quotes": ["error", "single"],
     "semi": ["error", "never"],

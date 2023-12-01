@@ -7,6 +7,8 @@ export default function TransferOptions() {
   const { all, noTransfer, oneTransfer, twoTransfers, threeTransfers } = useSelector((state) => state.optionsReducer)
   const dispatch = useDispatch()
 
+  // УБРАТЬ ЧЕКБОКСЫ В МАП!!!! ДУБЛИРОВАНИЕ КОДА!
+  // объединить функции он клика
   const onAllClick = () => {
     if (all) {
       dispatch(clearOptions())
