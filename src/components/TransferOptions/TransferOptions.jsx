@@ -1,88 +1,59 @@
-import './TransferOptions.scss'
 import { useDispatch, useSelector } from 'react-redux'
+import { nanoid } from 'nanoid'
 
 import { clearOptions, setAllOptions, toggleOption } from '../../store/optionsSlice'
 
+import classes from './TransferOptions.module.scss'
+
 export default function TransferOptions() {
-  const { all, noTransfer, oneTransfer, twoTransfers, threeTransfers } = useSelector((state) => state.optionsReducer)
+  const {
+    'transfer-options': options,
+    'transfer-options__header': header,
+    'transfer-options__form': form,
+    'transfer-options__checkbox': checkbox,
+    'transfer-options__label': label,
+    'transfer-options__input': input,
+  } = classes
+  const filters = useSelector((state) => state.optionsReducer)
+  const optionsKeys = Object.keys(filters)
+  const optionsValues = Object.values(filters)
+  const optionsLabels = ['Все', 'Без пересадок', '1 пересадка', '2 пересадки', '3 пересадки']
+
   const dispatch = useDispatch()
 
-  // УБРАТЬ ЧЕКБОКСЫ В МАП!!!! ДУБЛИРОВАНИЕ КОДА!
-  // объединить функции он клика
-  const onAllClick = () => {
-    if (all) {
-      dispatch(clearOptions())
+  const onCheck = (option) => {
+    if (option === 'all') {
+      if (filters.all) {
+        dispatch(clearOptions())
+      } else {
+        dispatch(setAllOptions())
+      }
     } else {
-      dispatch(setAllOptions())
+      dispatch(toggleOption(option))
     }
   }
 
-  const onCheck = (option) => {
-    dispatch(toggleOption(option))
-  }
+  const optionsDisplay = optionsKeys.map((option, index) => {
+    return (
+      <label htmlFor={option} key={nanoid()} className={label}>
+        <input
+          type="checkbox"
+          name="option"
+          id={option}
+          className={input}
+          checked={optionsValues[index]}
+          onChange={() => onCheck(option)}
+        />
+        <span className={checkbox} />
+        {optionsLabels[index]}
+      </label>
+    )
+  })
 
   return (
-    <div className="transfer-options">
-      <h2 className="transfer-options__header">Количество пересадок</h2>
-      <form className="transfer-options__form">
-        <label htmlFor="all" className="transfer-options__label">
-          <input
-            type="checkbox"
-            name="option"
-            id="all"
-            className="transfer-options__input"
-            checked={all}
-            onChange={() => onAllClick()}
-          />
-          <span className="transfer-options__checkbox" />
-          Все
-        </label>
-        <label htmlFor="noTransfer" className="transfer-options__label">
-          <input
-            type="checkbox"
-            name="option"
-            id="noTransfer"
-            className="transfer-options__input"
-            checked={noTransfer}
-            onChange={() => onCheck('noTransfer')}
-          />
-          <span className="transfer-options__checkbox" />
-          Без пересадок
-        </label>
-        <label htmlFor="oneTransfer" className="transfer-options__label">
-          <input
-            type="checkbox"
-            name="option"
-            id="oneTransfer"
-            className="transfer-options__input"
-            checked={oneTransfer}
-            onChange={() => onCheck('oneTransfer')}
-          />
-          <span className="transfer-options__checkbox" />1 пересадка
-        </label>
-        <label htmlFor="twoTransfers" className="transfer-options__label">
-          <input
-            type="checkbox"
-            name="option"
-            id="twoTransfers"
-            className="transfer-options__input"
-            checked={twoTransfers}
-            onChange={() => onCheck('twoTransfers')}
-          />
-          <span className="transfer-options__checkbox" />2 пересадки
-        </label>
-        <label htmlFor="threeTransfers" className="transfer-options__label">
-          <input
-            type="checkbox"
-            name="option"
-            id="threeTransfers"
-            className="transfer-options__input"
-            checked={threeTransfers}
-            onChange={() => onCheck('threeTransfers')}
-          />
-          <span className="transfer-options__checkbox" />3 пересадки
-        </label>
-      </form>
+    <div className={options}>
+      <h2 className={header}>Количество пересадок</h2>
+      <form className={form}>{optionsDisplay}</form>
     </div>
   )
 }

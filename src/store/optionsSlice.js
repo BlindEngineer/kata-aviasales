@@ -3,11 +3,11 @@ import { createSlice } from '@reduxjs/toolkit'
 const optionsSlice = createSlice({
   name: 'options',
   initialState: {
-    all: false,
-    noTransfer: false,
-    oneTransfer: false,
-    twoTransfers: false,
-    threeTransfers: false,
+    all: true,
+    noTransfer: true,
+    oneTransfer: true,
+    twoTransfers: true,
+    threeTransfers: true,
   },
   reducers: {
     toggleOption(state, action) {

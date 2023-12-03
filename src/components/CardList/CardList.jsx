@@ -1,21 +1,37 @@
-import './CardList.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { nanoid } from 'nanoid'
 
 import Card from '../Card/Card'
-import { fetchId } from '../../services/apiService'
+import { getTheWholeBunchOfTickets } from '../../services/apiService'
+import ShowMoreButton from '../ShowMoreButton/ShowMoreButton'
+import ErrorIndicator from '../ErrorIndicator/ErrorIndicator'
+import NoTicketsIndicator from '../NoTicketsIndicator/NoTicketsIndicator'
+import LoadingIndicator from '../LoadingIndicator/LoadingIndicator'
+import sortTickets from '../../services/sortService'
+import optionsFilterTickets from '../../services/optionsService'
 
 export default function CardList() {
   const tickets = useSelector((state) => state.ticketReducer.tickets)
+  const loading = useSelector((state) => state.ticketReducer.loading)
+  const error = useSelector((state) => state.ticketReducer.error)
+  const options = useSelector((state) => state.optionsReducer)
+  const sorting = useSelector((state) => state.sortReducer.activeTab)
+
+  const [showCount, setShowCount] = useState(5)
+
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchId())
+    dispatch(getTheWholeBunchOfTickets())
   }, [dispatch])
 
   const formatPrice = (price) => `${price.toLocaleString('ru')} ₽`
   const brandLogoUrl = 'http://pics.avs.io/110/36/'
+
+  const increaseCount = () => {
+    setShowCount(showCount + 5)
+  }
 
   const getDuration = (duration) => {
     const hours = String(Math.floor(duration / 60))
@@ -46,7 +62,8 @@ export default function CardList() {
     return `${addZeroToTime(hours)}:${addZeroToTime(minutes)}`
   }
 
-  const ticketsSliceToDisplay = tickets.slice(0, 5)
+  const sortedTickets = sortTickets(optionsFilterTickets(tickets, options), sorting)
+  const ticketsSliceToDisplay = sortedTickets.slice(0, showCount)
 
   const getTransferText = (num) => {
     switch (num) {
@@ -102,5 +119,13 @@ export default function CardList() {
       />
     )
   })
-  return <div className="cardWrapper">{ticketsDisplay}</div>
+  return (
+    <>
+      {error ? <ErrorIndicator message={error} /> : null}
+      {loading ? <LoadingIndicator /> : null}
+      {!ticketsSliceToDisplay.length && !loading ? <NoTicketsIndicator /> : null}
+      <div>{ticketsDisplay}</div>
+      {tickets.length > ticketsSliceToDisplay.length ? <ShowMoreButton increaseCount={increaseCount} /> : null}
+    </>
+  )
 }
