@@ -1,12 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-// импорт по умолчанию, импортируем с нужным именем
 import thunk from 'redux-thunk'
 
 import sortReducer from './sortSlice'
 import optionsReducer from './optionsSlice'
 import ticketReducer from './ticketSlice'
 
-// создали стор
 const aviaStore = configureStore({
   reducer: {
     sortReducer,
@@ -14,7 +12,7 @@ const aviaStore = configureStore({
     ticketReducer,
   },
   middleware: [thunk],
-  devTools: true,
+  devTools: false,
 })
-
+// devTools - false для правильного отображения на устройствах без девтулзов
 export default aviaStore
